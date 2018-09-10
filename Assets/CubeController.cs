@@ -22,6 +22,8 @@ public class CubeController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        //ボリュームを0にする
+        //GetComponent<AudioSource>().volume = 0;
     }
 
     // Update is called once per frame
@@ -35,5 +37,19 @@ public class CubeController : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    //他のオブジェクトと接触した場合の処理
+    void OnCollisionEnter2D(Collision2D other)
+    {
+        Debug.Log("当たり判定");
+        //障害物に衝突した場合（追加）
+        if (other.gameObject.tag == "BlockTag")
+        {
+            Debug.Log("音声再生");
+            GetComponent<AudioSource>().Play();
+
+        }
+        
     }
 }
