@@ -43,13 +43,19 @@ public class CubeController : MonoBehaviour
     void OnCollisionEnter2D(Collision2D other)
     {
         Debug.Log("当たり判定");
-        //障害物に衝突した場合（追加）
+        //ブロックに衝突した場合
         if (other.gameObject.tag == "BlockTag")
         {
             Debug.Log("音声再生");
             GetComponent<AudioSource>().Play();
 
         }
-        
+        //地面に衝突した場合
+        else if (other.gameObject.tag == "GroundTag")
+        {
+            GetComponent<AudioSource>().Play();
+
+        }
+
     }
 }
